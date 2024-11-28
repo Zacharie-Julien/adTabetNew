@@ -1,0 +1,40 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+    {{ parent() }} - Connexion
+{% endblock %}
+
+{% block contenu %}
+    <div class="d-flex justify-content-center align-items-center" style="min-height: 100vh; background-image: url('./fond.jpg'); background-size: cover; backdrop-filter: blur(1px);">
+        <div class="bg-white rounded-4 shadow p-5 card-connect">
+            {% if form.valide is defined %}
+                {% if form.valide == true %}
+                    <h1 class="color text-center">Connexion réussie</h1>
+                    <h2 class="text-center">Bienvenue !</h2>
+                {% else %}
+                    <h1 class="color text-center">Échec de la connexion</h1>
+                    <h2 class="text-center">Erreur : {{ form.message }}</h2>
+                    <div class="text-center mt-3">
+                        <a href="index.php?page=connexion" class="btn btn-primary">Réessayer</a>
+                    </div>
+                {% endif %}
+            {% else %}
+                <h2 class="color text-center mb-4">CONNEXION</h2>
+                <form action="index.php?page=connexion" class="form" method="post">
+                    <div class="mb-3">
+                        <label for="inputEmail" class="form-label color small">EMAIL</label>
+                        <input type="email" class="form-control bg-white" id="inputEmail" name="inputEmail" placeholder="Entrez votre email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputPassword" class="form-label color small">MOT DE PASSE</label>
+                        <input type="password" class="form-control bg-white" id="inputPassword" name="inputPassword" placeholder="Entrez votre mot de passe" required>
+                    </div>
+                    <button class="btn btn-primary w-100" type="submit" name="btConnecter">Se connecter</button>
+                </form>
+                <div class="d-flex justify-content-between mt-4 small">
+                    <a href="#" class="color text-decoration-none">Mot de passe oublié ?</a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

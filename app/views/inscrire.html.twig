@@ -1,0 +1,68 @@
+{% extends "base.html.twig" %}
+{% block title %}
+	{{ parent() }}S'inscrire
+{% endblock %}
+{% block contenu %}
+	{% if form.valide is defined %}
+		{% if form.valide == true %}
+			<h1>Inscription réussie</h1>
+			<h1>Voici votre identifiant :
+				{{form.email}}</h1>
+			{% if form.role == 1 %}
+				<h1>Vous êtes administrateur du site</h1>
+			{% else %}
+				<h1>Vous êtes un client du site
+				</h1>
+			{% endif %}
+		{% else %}
+			<h1>Echec de l'inscription</h1>
+			<h1>Erreur :
+				{{form.message}}</h1>
+			<h1>
+				<a href="index.php?page=inscrire">Retourner sur la page d'inscription</a>
+			</h1>
+		{% endif %}
+	{% else %}
+		<div class="container">
+			<form action="index.php?page=inscrire" class="form" method="post">
+				<p class="title">Inscription
+				</p>
+				<p class="message">Inscrivez-vous pour plus d'avantages !
+				</p>
+				<div class="flex">
+					<label>
+						<input class="input" id="prenom" name="prenom" type="text" placeholder="" required>
+						<span>Prénom</span>
+					</label>
+
+					<label>
+						<input class="input" id="nom" name="nom" type="text" placeholder="" required>
+						<span>Nom</span>
+					</label>
+				</div>
+
+				<label>
+					<input class="input" id="inputEmail" name="inputEmail" type="email" placeholder="" required>
+					<span>Email</span>
+				</label>
+
+				<label>
+					<input class="input" id="inputPassword" name="inputPassword" type="password" placeholder="" required>
+					<span>Mot de passe</span>
+				</label>
+				<label>
+					<input class="input" id="inputPassword2" name="inputPassword2" type="password" placeholder="" required>
+					<span>Confirmer le mot de passe</span>
+				</label>
+				<button class="submit" type="submit" name="btInscrire">Envoyer</button>
+				<select name="role">
+					<option value="1">Administrateur</option>
+					<option value="2">Client</option>
+				</select>
+				<p class="signin">Vous avez déjà un compte ?
+					<a href="index.php?page=connexion">Connectez-vous</a>
+				</p>
+			</form>
+		</div>
+	{% endif %}
+{% endblock %}

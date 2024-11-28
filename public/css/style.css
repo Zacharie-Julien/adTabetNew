@@ -1,0 +1,33 @@
+body {
+    background-image: url(../images/fond.jpg);
+    min-height: 100vh;
+    background-size: cover;
+    backdrop-filter: blur(1px);
+}
+
+.card-connect{
+    width: 500px;
+    background-color: #fef7db !important;
+}
+
+.card-create{
+    width: 700px;
+    background-color: #fef7db !important;
+}
+
+.color {
+    color : #e1906d;
+}
+
+.btn-primary{
+    background-color: #e1906d ;
+    border: none;
+}
+
+.btn-primary:hover{
+    background-color: #dd8058
+}
+
+.bg-white{
+    background-color: #ffffff91;
+}
